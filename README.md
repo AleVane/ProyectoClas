@@ -1,2 +1,2 @@
-# Números escritos a mano
+# Proyecto Redes Neuronales 
 

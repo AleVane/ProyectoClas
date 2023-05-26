@@ -158,35 +158,26 @@
         var tensor = tf.tensor4d(arr);
         var resultado = modelo.predict(tensor).dataSync();
 
-          var respuesta;
-    switch (resultado.indexOf(Math.max(...resultado))) {
-      case 0:
-        respuesta = "Playera";
-        break;
-      case 1:
-        respuesta = "Top";
-        break;
-      case 2:
-        respuesta = "Blusa";
-        break;
-      case 3:
-        respuesta = "Pantalón";
-        break;
-      case 4:
-        respuesta = "Bolsa";
-        break;
-      case 5:
-        respuesta = "Abrigo";
-        break;
-      case 6:
-        respuesta = "Botín";
-        break;
-      default:
-        respuesta = "Desconocido";
+         var respuesta;
+    if (resultado <= 0.125) {
+      respuesta = "Vestido";
+    } else if (resultado <= 0.25) {
+      respuesta = "Bolsa";
+    } else if (resultado <= 0.375) {
+      respuesta = "Abrigo";
+    } else if (resultado <= 0.5) {
+      respuesta = "Blusa";
+    } else if (resultado <= 0.625) {
+      respuesta = "Botín";
+    } else if (resultado <= 0.75) {
+      respuesta = "Playera";
+    } else if (resultado <= 0.875) {
+      respuesta = "Top";
+    } else {
+      respuesta = "Pantalón";
     }
     document.getElementById("resultado").innerHTML = respuesta;
   }
-
   setTimeout(predecir, 150);
 }
 

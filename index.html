@@ -158,18 +158,28 @@
         var tensor = tf.tensor4d(arr);
         var resultado = modelo.predict(tensor).dataSync();
 
-        var respuesta;
-        if (resultado <= .5) {
-          respuesta = "Pantalón";
-        } else {
-          respuesta = "Blusa";
-        }
-        document.getElementById("resultado").innerHTML = respuesta;
-
-      }
-
-      setTimeout(predecir, 150);
+         var respuesta;
+    if (resultado <= 0.125) {
+      respuesta = "Pantalón";
+    } else if (resultado <= 0.25) {
+      respuesta = "Bolsa";
+    } else if (resultado <= 0.375) {
+      respuesta = "Abrigo";
+    } else if (resultado <= 0.5) {
+      respuesta = "Pantalón";
+    } else if (resultado <= 0.625) {
+      respuesta = "Botín";
+    } else if (resultado <= 0.75) {
+      respuesta = "Playera";
+    } else if (resultado <= 0.875) {
+      respuesta = "Top";
+    } else {
+      respuesta = "Blusa";
     }
+    document.getElementById("resultado").innerHTML = respuesta;
+  }
+  setTimeout(predecir, 150);
+}
 
     /**
        * Hermite resize - fast image resize/resample using Hermite filter. 1 cpu version!
